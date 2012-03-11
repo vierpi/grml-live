@@ -29,10 +29,14 @@ BOOTX64="${BOOTX64##${target}}"
 EFI_IMG="${EFI_IMG##${target}}"
 TMP_CONFIG="${TMP_CONFIG##${target}}"
 
-ARCHS=(i386-pc)
 
 declare -A ADDITIONAL_MODULES
-ADDITIONAL_MODULES[i386-pc]="biosdisk"
+ARCHS=()
+
+if [ -r "${target}"/usr/lib/grub/i386-pc/moddep.lst ] ;  then
+  ARCHS+=(i386-pc)
+  ADDITIONAL_MODULES[i386-pc]="biosdisk"
+fi
 
 if ifclass AMD64 ; then
   if [ -r "${target}"/usr/lib/grub/x86_64-efi/moddep.lst ] ; then
@@ -47,6 +51,12 @@ fi
 BOOTX64="${BOOTX64##${target}}"
 EFI_IMG="${EFI_IMG##${target}}"
 TMP_CONFIG="${TMP_CONFIG##${target}}"
+
+
+if [ -z "$ARCHS" ] ; then
+  echo "WARNING: No grub modules found, exiting" >&2
+  exit 0
+fi
 
 for arch in ${ARCHS[@]} ; do
 $ROOTCMD grub-mkimage -O $arch -o /boot/$arch.img --prefix=/boot/grub/ --config="$TMP_CONFIG" \
@@ -68,7 +78,7 @@ fi
 if ifclass AMD64 ; then
   if ! [ -r "${target}/${BOOTX64}" ] ; then
     echo "Can not access grub efi image." >&2
-    exit 1
+    exit 0
   fi
 
   SIZE=$(du -sk "${target}/${BOOTX64}" | awk -F" " '{print $1'})
