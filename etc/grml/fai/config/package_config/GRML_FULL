@@ -274,6 +274,7 @@ diffutils
 grml-etc-core
 mawk
 mc
+ncurses-term
 patch
 pv
 screen
