@@ -38,6 +38,7 @@ less
 live-boot-grml live-boot-grml-doc
 lvm2
 mdadm
+ncurses-term
 nfs-common
 openssh-client
 openssh-server
