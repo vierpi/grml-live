@@ -1,4 +1,7 @@
 PACKAGES install
 
 emacs25-nox
+grml-live
 grml-live-addons
+tmux
+mc
