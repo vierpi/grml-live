@@ -1,0 +1,5 @@
+#!/bin/sh
+
+if [ -x /usr/bin/emacs ]; then
+    update-alternatives --set editor /usr/bin/emacs
+fi
