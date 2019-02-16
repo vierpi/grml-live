@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# I want default settings for tmux
+
+/bin/rm -f /etc/tmux.conf
