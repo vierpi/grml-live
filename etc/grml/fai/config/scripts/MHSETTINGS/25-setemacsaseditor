@@ -1,5 +1,5 @@
 #!/bin/sh
 
-if [ -x /usr/bin/emacs ]; then
-    update-alternatives --set editor /usr/bin/emacs
+if [ -x $target/usr/bin/emacs ]; then
+    $ROOTCMD update-alternatives --set editor /usr/bin/emacs
 fi

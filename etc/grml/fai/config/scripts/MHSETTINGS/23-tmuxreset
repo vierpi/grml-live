@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# I want default settings for tmux
+# I want to have default settings for tmux
 
-/bin/rm -f /etc/tmux.conf
+/bin/rm -f $target/etc/tmux.conf

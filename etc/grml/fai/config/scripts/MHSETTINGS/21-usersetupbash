@@ -11,9 +11,9 @@ if $ROOTCMD [ -r /bin/bash ] ; then
    $ROOTCMD chsh -s /bin/bash $USERNAME
 fi
 
-cat <<EOF > /root/.bashrc
+cat <<EOF > $target/root/.bashrc
 export LS_OPTIONS='--color=auto'
-alias ls='ls $LS_OPTIONS'
-alias ll='ls $LS_OPTIONS -l'
-alias l='ls $LS_OPTIONS -lA'
+alias ls='ls \$LS_OPTIONS'
+alias ll='ls \$LS_OPTIONS -l'
+alias l='ls \$LS_OPTIONS -lA'
 EOF
