@@ -18,11 +18,9 @@ alias ll='ls \$LS_OPTIONS -l'
 alias l='ls \$LS_OPTIONS -lA'
 EOF
 
-cat <<EOF > $target/home/$USERNAME/.bashrc
-export LS_OPTIONS='--color=auto'
-alias ls='ls \$LS_OPTIONS'
-alias ll='ls \$LS_OPTIONS -l'
-alias l='ls \$LS_OPTIONS -lA'
+cat <<EOF > $target/home/$USERNAME/.bash_aliases
+alias ll='ls -l'
+alias l='ls -lA'
 EOF
 
-$ROOTCMD chown ${USERNAME}:${USERNAME} /home/${USERNAME}/.bashrc
+$ROOTCMD chown ${USERNAME}:${USERNAME} /home/${USERNAME}/.bash_aliases
