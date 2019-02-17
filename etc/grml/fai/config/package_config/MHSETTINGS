@@ -1,2 +1,5 @@
 PACKAGES install
 
+emacs25
+ipython
+ipython3
